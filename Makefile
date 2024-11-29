@@ -15,6 +15,8 @@ malpine3:
 	tar -C extracted -xvpf malpine3.tar 
 	mkdir -p rootfs ; rm -rf rootfs && mkdir -p rootfs
 	tar -C rootfs -xpf extracted/*/layer.tar
-	sudo chown root:root rootfs/bin/hacksudo && sudo chmod 1755 rootfs/bin/hacksudo && stat rootfs/bin/hacksudo
+	chown root:root rootfs/bin/hacksudo && sudo chmod 1755 rootfs/bin/hacksudo && stat rootfs/bin/hacksudo
+	tar -C rootfs -cvpf malpine3_repacked.tar . 
+	docker image load -i malpine3_repacked.tar
 
 
